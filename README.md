@@ -10,7 +10,7 @@
 ## Game Description (As of now / May Change):
 Escape Protocol is a first-person sci-fi horror game set aboard a spaceship.The player must find codes/keycards to unlock an escape pod while avoiding a robot enemy. The player explores the dark interiors of the ship, collecting keycards and codes to unlock the escape pod, and survives against a robot enemy that hunts them down. A flashlight is the only light source but has limited battery life, forcing the player to be strategic about the usage before getting caught.
 
-Game Feature:
+Game Features:
 - First person perspective
 - Sprint mechanic with stamina bar that recovers slowly
 - Crouch to hide from robot enemy
