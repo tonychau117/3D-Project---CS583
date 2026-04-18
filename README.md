@@ -20,7 +20,7 @@ Game Feature:
 - Robot enemy with detection range
 - Keycards/Codes to collect and unlock escape pod
   
-## Mechanics
+## Mechanics (As of now / May Change):
 Solve puzzles to unlock the escape pod! Be wary of a corrupted robot that is trying to catch you!
 - WASD - Player Movement
 - Tab - Open Inventory
