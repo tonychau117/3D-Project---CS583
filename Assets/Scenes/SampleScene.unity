@@ -850,8 +850,8 @@ MonoBehaviour:
   lookInput: {x: 0, y: 0}
   sprintInput: {x: 0, y: 0}
   crouchDepth: 0
-  currentStamina: 100
   maxStamina: 100
+  currentStamina: 100
   sprintCost: 25
   staminaBar: {fileID: 2071051885}
   walkSpeed: 5
@@ -862,9 +862,10 @@ MonoBehaviour:
   cameraTransform: {fileID: 330585546}
   spotlight: {fileID: 1070719677}
   maxBattery: 100
-  batteryDrain: 20
   currentBattery: 100
+  batteryDrain: 20
   batteryBar: {fileID: 491057655}
+  chargeRate: 10
 --- !u!54 &778568101
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -83,7 +83,7 @@ public class PlayerController : MonoBehaviour
         // camera crouch
         if (cameraTransform != null)
         {
-            float targetY = isCrouching ? (defaultCameraY - crouchDepth) : defaultCameraY;
+            float targetY = isCrouching ? (defaultCameraY - crouchDepth) / 2: defaultCameraY;
 
             // set new camera pos
             Vector3 newLocalPos = cameraTransform.localPosition;
