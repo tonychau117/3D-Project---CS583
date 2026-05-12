@@ -9,9 +9,10 @@ public class PauseMenu : MonoBehaviour
 
     void Update()
     {
-        if (Keyboard.current.escapeKey.wasPressedThisFrame)
+        var kb = Keyboard.current;
+        if (kb.escapeKey.wasPressedThisFrame) //check if the player tap escape key
         {
-            if (isPaused)
+            if (isPaused) //if paused, go back to playing | if playing, pause it
                 Resume();
             else
                 Pause();
@@ -21,14 +22,14 @@ public class PauseMenu : MonoBehaviour
     public void Pause()
     {
         pausePanel.SetActive(true);
-        Time.timeScale = 0;
+        Time.timeScale = 0; //freeze entire environment
         isPaused = true;
     }
 
     public void Resume()
     {
         pausePanel.SetActive(false);
-        Time.timeScale = 1;
+        Time.timeScale = 1; //unfreezes entire environment
         isPaused = false;
     }
 

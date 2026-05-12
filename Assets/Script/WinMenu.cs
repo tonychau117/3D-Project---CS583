@@ -7,12 +7,12 @@ public class WinMenu : MonoBehaviour
 
     void Start()
     {
-        winPanel.SetActive(false);
+        winPanel.SetActive(false); //hides panel
     }
 
     public void ShowWinScreen()
     {
-        winPanel.SetActive(true);
+        winPanel.SetActive(true); //shows panel 
         Time.timeScale = 0;
     }
 
