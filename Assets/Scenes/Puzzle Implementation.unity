@@ -15753,9 +15753,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2110409629}
     m_Modifications:
+    - target: {fileID: 1410168888827694700, guid: 5417a09f4dfaae74b9337dddbf455b51, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1539180454}
+    - target: {fileID: 1410168888827694700, guid: 5417a09f4dfaae74b9337dddbf455b51, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Restart
+      objectReference: {fileID: 0}
     - target: {fileID: 1453692208304150248, guid: 5417a09f4dfaae74b9337dddbf455b51, type: 3}
       propertyPath: m_Name
       value: GameUiCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 3020591275814251758, guid: 5417a09f4dfaae74b9337dddbf455b51, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6050352592872744369, guid: 5417a09f4dfaae74b9337dddbf455b51, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6336918125689966837, guid: 5417a09f4dfaae74b9337dddbf455b51, type: 3}
       propertyPath: m_Pivot.x
@@ -15847,6 +15863,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6336918125689966837, guid: 5417a09f4dfaae74b9337dddbf455b51, type: 3}
   m_PrefabInstance: {fileID: 1539180452}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1539180454 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4279257782685480909, guid: 5417a09f4dfaae74b9337dddbf455b51, type: 3}
+  m_PrefabInstance: {fileID: 1539180452}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 230d4785e1b8b8944b88c8a6232082db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PauseMenu
 --- !u!1 &1546718821
 GameObject:
   m_ObjectHideFlags: 0

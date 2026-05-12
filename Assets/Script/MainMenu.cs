@@ -5,6 +5,9 @@ public class MainMenu : MonoBehaviour
 {
     public void StartGame()
     {
+        PauseMenu.isPaused = false;
+        Time.timeScale = 1;
+
         SceneManager.LoadScene("Puzzle Implementation");
     }
 

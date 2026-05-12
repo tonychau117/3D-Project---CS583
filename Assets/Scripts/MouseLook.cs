@@ -14,6 +14,10 @@ public class MouseLook : MonoBehaviour
 
     void Update()
     {
+
+        if (PauseMenu.isPaused) 
+            return;
+
         float mouseX = Input.GetAxis("Mouse X") * sensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * sensitivity * Time.deltaTime;
 

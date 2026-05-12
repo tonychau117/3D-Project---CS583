@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 public class PauseMenu : MonoBehaviour
 {
     public GameObject pausePanel;
-    private bool isPaused = false;
+    public static bool isPaused = false;
 
     void Update()
     {
@@ -43,5 +43,16 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1;
         SceneManager.LoadScene("MainMenu");
+    }
+
+    public void Restart()
+    {
+        isPaused = false;
+        Time.timeScale = 1;
+
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
+        SceneManager.LoadScene("Puzzle Implementation");
     }
 }
