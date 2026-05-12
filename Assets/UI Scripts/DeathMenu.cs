@@ -20,11 +20,17 @@ public class DeathScreen : MonoBehaviour
     {
         Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void QuitToMenu()
     {
         Time.timeScale = 1;
         SceneManager.LoadScene("Puzzle Implementation");
+
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }

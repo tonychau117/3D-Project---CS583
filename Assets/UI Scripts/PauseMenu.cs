@@ -24,6 +24,9 @@ public class PauseMenu : MonoBehaviour
         pausePanel.SetActive(true);
         Time.timeScale = 0; //freeze entire environment
         isPaused = true;
+
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     public void Resume()
@@ -31,11 +34,14 @@ public class PauseMenu : MonoBehaviour
         pausePanel.SetActive(false);
         Time.timeScale = 1; //unfreezes entire environment
         isPaused = false;
+
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void QuitToMenu()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene("Puzzle Implementation");
+        SceneManager.LoadScene("MainMenu");
     }
 }
