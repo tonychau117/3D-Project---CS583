@@ -44,6 +44,11 @@ public class PlayerController : MonoBehaviour
     public Image batteryBar;
     public float chargeRate;
 
+    [Header("Coin Variables")]
+    public int coinsCollected = 0;
+    public int coinsToWin = 10; // Change this to how many coins you want in your maze
+    public WinMenu winMenuScript; 
+
     // recharge
     private Coroutine rechargeStam;
     private Coroutine rechargeBattery;
@@ -239,5 +244,37 @@ public class PlayerController : MonoBehaviour
     {
         flashlightOn = !flashlightOn;
         spotlight.enabled = flashlightOn;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        // Check if the thing we hit is tagged "Coin"
+        if (other.CompareTag("Coin"))
+        {
+            coinsCollected++;
+            Debug.Log("Coins Collected: " + coinsCollected);
+
+            // Destroy the coin object so it disappears
+            Destroy(other.gameObject);
+
+            // Check if we have enough to win
+            if (coinsCollected >= coinsToWin)
+            {
+                WinGame();
+            }
+        }
+    }
+
+    void WinGame()
+    {
+        Debug.Log("YOU WIN!");
+        if (winMenuScript != null)
+        {
+            winMenuScript.ShowWinScreen(); 
+
+            //unlock the mouse so you can actually click the "Play Again" buttons
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
     }
 }

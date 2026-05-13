@@ -28,9 +28,9 @@ public class WinMenu : MonoBehaviour
     public void QuitToMenu()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene("Puzzle Implementation");
+        SceneManager.LoadScene("MainMenu");
 
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 }
