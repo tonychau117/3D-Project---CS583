@@ -37,12 +37,6 @@ public class PlayerController : MonoBehaviour
     private float defaultColliderHeight;
     private Vector3 defaultColliderCenter;
 
-    [Header("Flashlight Variables")]
-    public Light spotlight;
-    private bool flashlightOn;
-    public float maxBattery, currentBattery = 100f;
-    public float batteryDrain;
-    public Image batteryBar;
     public float chargeRate;
 
     [Header("Coin Variables")]
@@ -65,9 +59,6 @@ public class PlayerController : MonoBehaviour
         Cursor.visible = false;
 
         UpdateCoinUI(); //set the starting text
-
-        // disables flash on start
-        spotlight.enabled = false;
 
         // starting height
         if (cameraTransform != null)
@@ -121,28 +112,6 @@ public class PlayerController : MonoBehaviour
             float targetCenterY = isCrouching ? (defaultColliderCenter.y - (heightDifference / 2f)) : defaultColliderCenter.y;
 
             playerCollider.center = new Vector3(defaultColliderCenter.x, targetCenterY, defaultColliderCenter.z);
-        }
-
-        // drains battery if flash on
-        if (flashlightOn)
-        {
-            // curr level depends on how long its been on
-            currentBattery = Mathf.Clamp(currentBattery - batteryDrain * Time.deltaTime, 0, maxBattery);
-            // adjust the bar accordingly
-            batteryBar.fillAmount = currentBattery / maxBattery;
-
-            // bat recharge
-            if (rechargeBattery != null)
-            {
-                StopCoroutine(rechargeBattery);
-            }
-            rechargeBattery = StartCoroutine(RechargeBattery());
-        }
-        // 0 bat -> disable flash
-        if (currentBattery <= 0)
-        {
-            flashlightOn = false;
-            spotlight.enabled = false;
         }
     }
 
@@ -211,21 +180,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private IEnumerator RechargeBattery()
-    {
-        yield return new WaitForSeconds(1f);
-
-        while (currentBattery < maxBattery)
-        {
-            currentBattery += chargeRate / 10f;
-            if (currentBattery > maxBattery)
-            {
-                currentBattery = maxBattery;
-            }
-            batteryBar.fillAmount = currentBattery / maxBattery;
-            yield return new WaitForSeconds(.1f);
-        }
-    }
 
     // input toggles
     public void OnMove(InputValue value)
@@ -243,11 +197,6 @@ public class PlayerController : MonoBehaviour
     public void OnSprint(InputValue value)
     {
         isSprinting = value.isPressed;
-    }
-    public void OnFlashlight(InputValue value)
-    {
-        flashlightOn = !flashlightOn;
-        spotlight.enabled = flashlightOn;
     }
 
     private void OnTriggerEnter(Collider other)
