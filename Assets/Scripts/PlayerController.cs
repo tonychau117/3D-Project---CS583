@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -47,7 +48,8 @@ public class PlayerController : MonoBehaviour
     [Header("Coin Variables")]
     public int coinsCollected = 0;
     public int coinsToWin = 10; // Change this to how many coins you want in your maze
-    public WinMenu winMenuScript; 
+    public WinMenu winMenuScript;
+    public TextMeshProUGUI coinText;
 
     // recharge
     private Coroutine rechargeStam;
@@ -61,6 +63,8 @@ public class PlayerController : MonoBehaviour
         // hides cursor
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        UpdateCoinUI(); //set the starting text
 
         // disables flash on start
         spotlight.enabled = false;
@@ -248,16 +252,20 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        // Check if the thing we hit is tagged "Coin"
+       //checks if we hit is coin
         if (other.CompareTag("Coin"))
         {
+            
             coinsCollected++;
+
+            //update the HUD and Console
+            UpdateCoinUI();
             Debug.Log("Coins Collected: " + coinsCollected);
 
-            // Destroy the coin object so it disappears
+            //destroy the coin object so it disappears immediately
             Destroy(other.gameObject);
 
-            // Check if we have enough to win
+            //checks if we have enough coins to win
             if (coinsCollected >= coinsToWin)
             {
                 WinGame();
@@ -267,7 +275,7 @@ public class PlayerController : MonoBehaviour
 
     void WinGame()
     {
-        Debug.Log("YOU WIN!");
+        Debug.Log("win!");
         if (winMenuScript != null)
         {
             winMenuScript.ShowWinScreen(); 
@@ -275,6 +283,14 @@ public class PlayerController : MonoBehaviour
             //unlock the mouse so you can actually click the "Play Again" buttons
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
+        }
+    }
+
+    void UpdateCoinUI()
+    {
+        if (coinText != null)
+        {
+            coinText.text = "Coins: " + coinsCollected + " / " + coinsToWin;
         }
     }
 }
