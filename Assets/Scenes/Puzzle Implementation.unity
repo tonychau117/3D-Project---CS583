@@ -19668,6 +19668,8 @@ MonoBehaviour:
   mouseSensitivity: 15
   rb: {fileID: 1897395284}
   cameraTransform: {fileID: 330585546}
+  playerCollider: {fileID: 1897395279}
+  crouchColliderHeight: 1
   spotlight: {fileID: 741601126}
   maxBattery: 100
   currentBattery: 100
