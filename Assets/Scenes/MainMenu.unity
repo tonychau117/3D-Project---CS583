@@ -554,6 +554,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 7803074130751547711, guid: 746069b7867d99e47bb18fd4e6adc05b, type: 3}
+      propertyPath: m_text
+      value: "\u2014 find the coins. avoid the robot. survive \u2014 "
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
