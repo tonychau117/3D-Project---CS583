@@ -4,7 +4,8 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - Floor
+  - New tag
+  - Coin
   layers:
   - Default
   - TransparentFX
