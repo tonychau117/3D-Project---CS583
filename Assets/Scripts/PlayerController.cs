@@ -30,6 +30,12 @@ public class PlayerController : MonoBehaviour
     public Rigidbody rb;
     public Transform cameraTransform;
 
+    [Header("Collider Variables")]
+    public CapsuleCollider playerCollider;
+    public float crouchColliderHeight = 1f; 
+    private float defaultColliderHeight;
+    private Vector3 defaultColliderCenter;
+
     [Header("Flashlight Variables")]
     public Light spotlight;
     private bool flashlightOn;
@@ -41,7 +47,6 @@ public class PlayerController : MonoBehaviour
     // recharge
     private Coroutine rechargeStam;
     private Coroutine rechargeBattery;
-
 
     private float defaultCameraY;
     private float xRotation = 0f;
@@ -59,6 +64,13 @@ public class PlayerController : MonoBehaviour
         if (cameraTransform != null)
         {
             defaultCameraY = cameraTransform.localPosition.y;
+        }
+
+        // store default collider settings so we can stand back up properly
+        if (playerCollider != null)
+        {
+            defaultColliderHeight = playerCollider.height;
+            defaultColliderCenter = playerCollider.center;
         }
     }
 
@@ -83,12 +95,23 @@ public class PlayerController : MonoBehaviour
         // camera crouch
         if (cameraTransform != null)
         {
-            float targetY = isCrouching ? (defaultCameraY - crouchDepth) / 2: defaultCameraY;
+            float targetY = isCrouching ? (defaultCameraY - crouchDepth) / 2 : defaultCameraY;
 
             // set new camera pos
             Vector3 newLocalPos = cameraTransform.localPosition;
             newLocalPos.y = targetY;
             cameraTransform.localPosition = newLocalPos;
+        }
+
+        // collider crouch
+        if (playerCollider != null)
+        {
+            //  new height
+            playerCollider.height = isCrouching ? crouchColliderHeight : defaultColliderHeight;
+            float heightDifference = defaultColliderHeight - crouchColliderHeight;
+            float targetCenterY = isCrouching ? (defaultColliderCenter.y - (heightDifference / 2f)) : defaultColliderCenter.y;
+
+            playerCollider.center = new Vector3(defaultColliderCenter.x, targetCenterY, defaultColliderCenter.z);
         }
 
         // drains battery if flash on
@@ -129,7 +152,7 @@ public class PlayerController : MonoBehaviour
             // adjust stam based on sprinting duration
             currentStamina -= sprintCost * Time.deltaTime;
             // to prevent going into negatives
-            if(currentStamina < 0)
+            if (currentStamina < 0)
             {
                 currentStamina = 0;
             }
@@ -144,7 +167,7 @@ public class PlayerController : MonoBehaviour
             rechargeStam = StartCoroutine(RechargeStamina());
         }
         // set speed to crouch speed
-        else if(isCrouching)
+        else if (isCrouching)
         {
             Vector3 moveDirection = (transform.right * moveInput.x + transform.forward * moveInput.y).normalized;
             Vector3 targetVelocity = moveDirection * crouchSpeed;
@@ -167,10 +190,10 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
 
-        while(currentStamina < maxStamina)
+        while (currentStamina < maxStamina)
         {
             currentStamina += chargeRate / 10f;
-            if(currentStamina > maxStamina)
+            if (currentStamina > maxStamina)
             {
                 currentStamina = maxStamina;
             }
