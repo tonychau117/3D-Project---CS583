@@ -44,6 +44,7 @@ namespace Monster.StateMachine.States
         protected GameObject Player => monster.Player;
         protected Movement movement;
         protected Detection detection;
+        protected AnimationHandler animator;
 
         
         // HEADER: CONSTRUCTOR
@@ -53,6 +54,7 @@ namespace Monster.StateMachine.States
             monster = this_monster;
             movement = monster.movement;
             detection = monster.detection;
+            animator = monster.animator;
         }
         
         // HEADER: STATE MANAGEMENT

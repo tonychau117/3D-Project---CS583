@@ -30,12 +30,11 @@ namespace Monster.StateMachine.States
         
         // HEADER: STATE METHODS
         // ReSharper disable Unity.PerformanceAnalysis
-        public override UniTask Enter()
+        public override async UniTask Enter()
         {
             // Create a path to the last known location of the target
-            curPath = AStarSearch.Search(monster.transform, Player.transform.position);
-            if(curPath.IsUnityNull()){ _ = monster.ChangeToState(MonsterStates.Search, MonsterStates.Patrol); 
-                return UniTask.CompletedTask;}
+            curPath = await AStarSearch.Search(monster.transform, Player.transform.position, useFloorPos: true);
+            if(curPath.IsUnityNull()){ _ = monster.ChangeToState(MonsterStates.Search, MonsterStates.Patrol); }
             
             // Start moving the enemy through the path
             if (curPath != null) monster.Destination = curPath.Pop();
@@ -46,19 +45,17 @@ namespace Monster.StateMachine.States
             () => {
                 HandleTimeout();
             }, SearchTime);
-            return UniTask.CompletedTask;
         }
 
         public override async UniTask Run() {
             // If the enemy is found, return to a Chase State
             if (detection.TransformInSight(Player.transform)){
-                _ = monster.ChangeToState(MonsterStates.Search, MonsterStates.Chase); return;
+                await monster.ChangeToState(MonsterStates.Search, MonsterStates.Chase); return;
             }
 
             if (timeout)
             {
-                // TODO: FIX ANIMATIONS
-                //enemy.SetAnimationBool("Chase", false);
+                _ = animator.GoToState(MonsterStates.None);
                 await UniTask.Delay(3000); // Delay before returning to idle state
                 _ = monster.ChangeToState(MonsterStates.Search, MonsterStates.Patrol);
                 return;
@@ -80,8 +77,7 @@ namespace Monster.StateMachine.States
             // If the enemy has not yet reached the target position, move towards it
             if (!movement.AtLocation(monster.Destination))
             {
-                // TODO: FIX ANIMATIONS
-                //enemy.SetAnimationBool("Chase", true);
+                _ = animator.GoToState(MonsterStates.None);
                 movement.MoveTowardsLocation(monster.Destination);
             }
             
@@ -91,7 +87,7 @@ namespace Monster.StateMachine.States
             // If the Stack is empty, 
             else
             {
-                curPath = AStarSearch.Search(monster.transform, Player.transform.position);
+                curPath = await AStarSearch.Search(monster.transform, Player.transform.position, useFloorPos: true);
                 
                 // If a valid path is not found, set the NPC back to idle
                 if(NoPath()){ _ = monster.ChangeToState(MonsterStates.Search, MonsterStates.Patrol); return;}

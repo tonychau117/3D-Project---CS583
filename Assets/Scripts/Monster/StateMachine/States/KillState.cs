@@ -13,8 +13,8 @@ namespace Monster.StateMachine.States
         {
             monster.transform.rotation = Quaternion.LookRotation(
                 movement.GetDirectionIgnoreY(monster.Player.transform.position));
-            // TODO: FIX ANIMATIONS
             // Do animation
+            _ = animator.GoToState(MonsterStates.Kill);
             monster.OnKill.Invoke();
             return UniTask.CompletedTask;
         }

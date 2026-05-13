@@ -13,7 +13,8 @@ namespace Monster.StateMachine
     /// Abstract class for state machines that handle switching between states
     [HideMonoScript]
     [RequireComponent(typeof(Movement)),
-    RequireComponent(typeof(Detection))]
+    RequireComponent(typeof(Detection)),
+    RequireComponent(typeof(AnimationHandler))]
     public class MonsterStateMachine : MonoBehaviour
     {
         // HEADER: CONSTANTS 
@@ -28,12 +29,12 @@ namespace Monster.StateMachine
         
         [Header("Patrolling")]
         
-        [Tooltip("Empty Objects representing the locations you want the monster to pathfind to"), SerializeField]
-        private List<Transform> patrolMarkers;
-        public List<Transform> PatrolMarkers => patrolMarkers;
         [Tooltip("How long the monster should remain at a marker before moving on to the next"), SerializeField]
         private int patrolDelay;
         public int PatrolDelay => patrolDelay;
+        [Tooltip("Empty Objects representing the locations you want the monster to pathfind to"), SerializeField]
+        private List<Transform> patrolMarkers;
+        public List<Transform> PatrolMarkers => patrolMarkers;
 
         [Header("Searching")] 
         
@@ -60,6 +61,7 @@ namespace Monster.StateMachine
         public Vector3 position => transform.position;
         public Movement movement { get; private set; }
         public Detection detection { get; private set; }
+        public AnimationHandler animator { get; private set; }
         
         
         // HEADER: RUNTIME FIELDS
@@ -70,7 +72,6 @@ namespace Monster.StateMachine
         /// The current state of the Monster NPC
         private MonsterState CurrentState { get; set; }
 
-        // TODO: Make Getter/Setter once states have been made
         private MonsterStates CurrentStateID
         {
             get
@@ -109,6 +110,7 @@ namespace Monster.StateMachine
         {
             movement = GetComponent<Movement>();
             detection = GetComponent<Detection>();
+            animator = GetComponent<AnimationHandler>();
         }
         
         protected void Start() { _ = ChangeToState(MonsterStates.None, MonsterStates.Patrol); }

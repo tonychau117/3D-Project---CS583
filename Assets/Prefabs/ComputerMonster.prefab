@@ -4716,7 +4716,22 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 100122, guid: b72b3c635ec9b794e96772d4d074975f, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 8403608390593489864}
+    - targetCorrespondingSourceObject: {fileID: 100122, guid: b72b3c635ec9b794e96772d4d074975f, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 3299457722006832775}
+    - targetCorrespondingSourceObject: {fileID: 100122, guid: b72b3c635ec9b794e96772d4d074975f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1824430216680366085}
+    - targetCorrespondingSourceObject: {fileID: 100122, guid: b72b3c635ec9b794e96772d4d074975f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5517044767334782931}
+    - targetCorrespondingSourceObject: {fileID: 100122, guid: b72b3c635ec9b794e96772d4d074975f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 957416316196833450}
+    - targetCorrespondingSourceObject: {fileID: 100122, guid: b72b3c635ec9b794e96772d4d074975f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6526028674871227039}
     - targetCorrespondingSourceObject: {fileID: 100188, guid: b72b3c635ec9b794e96772d4d074975f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6860134494022204746}
@@ -5200,6 +5215,33 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 100122, guid: b72b3c635ec9b794e96772d4d074975f, type: 3}
   m_PrefabInstance: {fileID: 2266116579424309107}
   m_PrefabAsset: {fileID: 0}
+--- !u!54 &8403608390593489864
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2266116579424209001}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!95 &3299457722006832775
 Animator:
   serializedVersion: 7
@@ -5210,7 +5252,7 @@ Animator:
   m_GameObject: {fileID: 2266116579424209001}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 4696d537231129a4aa325112bde3eb08, type: 3}
-  m_Controller: {fileID: 9100000, guid: e01522ac8446d324387476d0a0db4251, type: 2}
+  m_Controller: {fileID: 9100000, guid: c18ec8dc28b5b46448a7c885446bbdbc, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -5222,6 +5264,68 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1824430216680366085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2266116579424209001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d66e3ee26a2d7c84d94581fe119899fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Monster.StateMachine.MonsterStateMachine
+  player: {fileID: 0}
+  patrolDelay: 2000
+  patrolMarkers:
+  - {fileID: 0}
+  - {fileID: 0}
+  searchTime: 10000
+  killDistance: 5
+  OnKill:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &5517044767334782931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2266116579424209001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cf6e988284c4a54d89d7fd0d7cb4a6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Monster.AnimationHandler
+  controller: {fileID: 0}
+--- !u!114 &957416316196833450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2266116579424209001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95c27269f568aa942bbd4c5376694aee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Monster.Components.Movement
+  speed: 3
+  centering_factor: {x: 0, y: 0, z: 0}
+--- !u!114 &6526028674871227039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2266116579424209001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2c128c0ef825114988550147d8fe135, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Monster.Components.Detection
+  activeDetectionRange: 30
 --- !u!1001 &3654901824437598567
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using Tools;
 using UnityEngine;
@@ -58,8 +59,7 @@ namespace Monster.StateMachine.States
             patrolMarkers = monster.PatrolMarkers;
             patrolDelay = monster.PatrolDelay;
             
-            // TODO: Come back to fix animations
-            //enemy.SetAnimationTrigger("Idle");
+            _ = animator.GoToState(MonsterStates.Patrol);
             
             // SET DEFAULTS
             movement.Speed = DEFAULT_SPEED; 
@@ -88,23 +88,20 @@ namespace Monster.StateMachine.States
             if (Player == NO_PLAYER) return;
             monster.transform.rotation = Quaternion.LookRotation(
                 movement.GetDirectionIgnoreY(monster.Player.transform.position)); // Look at target before attacking
-            // TODO: Fix Animations and Audio
-            //enemy.SetAnimationBool("Walk", false);
+            await animator.GoToState(MonsterStates.Chase);
             //enemy.PlayAudio(BaseEnemy.SoundFile.Scream);
-            //await enemy.AwaitAnimationTrigger("Scream");
         }
         
         
         // HEADER: PATROL METHODS
         
         /// <summary> Implementation for making an Enemy follow a given path </summary>
-        private async void Patrol()
+        private void Patrol()
         {
             // If the enemy has not yet reached the target position, move towards it
             if (!NoPath() && !movement.AtLocation(Destination))
             {
-                // TODO: Fix Animation
-                //enemy.SetAnimationBool("Walk", true);
+                _ = animator.GoToState(MonsterStates.Patrol);
                 movement.MoveTowardsLocation(Destination);
             }
             
@@ -113,12 +110,10 @@ namespace Monster.StateMachine.States
 
             // If the Stack is empty, make a new path
             else { 
-                // TODO: FIX ANIMATION
-                //enemy.SetAnimationBool("Walk", false);
+                _ = animator.GoToState(MonsterStates.None);
 
                 pausePatrolling = true;
-                await InvokeWithDelay(SetNewPath, patrolDelay);
-                pausePatrolling = false;
+                InvokeWithDelay(SetNewPath, patrolDelay);
             }
         }
         
@@ -127,8 +122,10 @@ namespace Monster.StateMachine.States
         {
             patrolIndex = IncrementIndex(patrolIndex, patrolMarkers, false, true); 
             
-            curPath = CreatePath(); // Create a new path in either case
+            curPath = await CreatePath(); // Create a new path in either case
 
+            pausePatrolling = false;
+            
             if (curPath == NO_PATH)
             {
                 await UniTask.Delay(1000);
@@ -159,8 +156,11 @@ namespace Monster.StateMachine.States
         private bool NoPath() { return curPath == NO_PATH || Empty(curPath); }
 
         /// Use A* search to create a path to the enemy's next destination
-        private Stack<Vector3> CreatePath() {  return AStarSearch.Search(
-            monster.transform, GetDestination(), epochs: 1500, useFloorPos: true); }
+        private async Task<Stack<Vector3>> CreatePath() { 
+            return await AStarSearch.Search (
+            monster.transform, GetDestination(), epochs: 3000, useFloorPos: true
+            ); 
+        }
 
         /// <summary> Return the vector coordinates of the enemy's current target destination </summary>
         private Vector3 GetDestination() { return patrolMarkers[patrolIndex].position; }

@@ -20,7 +20,7 @@ namespace Tools
             // TODO: Come back to later and make sure this works
             if (Settings.Debug && debug)
             {
-                D.raw(new Ray(position, direction), debugColor, 0.5f);
+                D.raw(new Ray(position, direction), debugColor, 2f);
                 //Debug.DrawRay(position, direction * distance, debugColor);
             }
             Physics.Raycast(position, direction, out var hit, distance);

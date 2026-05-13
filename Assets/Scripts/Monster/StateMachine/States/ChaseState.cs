@@ -15,11 +15,7 @@ namespace Monster.StateMachine.States
         public override UniTask Enter() {
             
             // Initialize Values
-            movement.Speed = movement.DefaultSpeed + 3; 
-            
-            // TODO: FIX ANIMATIONS
-            // Animate
-            //npc.SetAnimationBool("Chase", true);
+            movement.Speed = movement.DefaultSpeed + 3;
             
             return UniTask.CompletedTask;
         }
@@ -45,8 +41,6 @@ namespace Monster.StateMachine.States
 
         public override UniTask Exit()
         {
-            //TODO: Fix Animations
-            //npc.SetAnimationBool("Chase", false);
             return UniTask.CompletedTask;
         }
 

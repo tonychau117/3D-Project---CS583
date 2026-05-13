@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -31,9 +33,12 @@ namespace Tools
         }
 
         /// <summary> Use A* Search to find a path between a Starting and Goal position </summary>
-        public static Stack<Vector3> Search(Transform entity, Vector3 goal, float threshold = 1, 
-            int epochs = 500, bool useFloorPos = false)
+        public static async UniTask<Stack<Vector3>> Search(Transform entity, Vector3 goal, 
+            int epochs = 1000, float threshold = 1, bool useFloorPos = false)
         {
+
+            await UniTask.Yield();
+            
             //HEADER: __Initializations__ 
             
             var start = useFloorPos ? entity.Find("FloorLevel").position : entity.position; // The Entity's Starting Position
@@ -55,7 +60,6 @@ namespace Tools
             
             while (openList.Count > 0 && goalNode.IsUnityNull() && !timeout) // While the list is not empty
             {
-
                 if (closedList.Count > epochs) { timeout = true; continue;}
                 
                 //SUBHEADER ___Obtain Successors___
