@@ -85,11 +85,12 @@ namespace Monster.StateMachine.States
         // Do Exit Functionality and Exit Animations
         public override async UniTask Exit()
         {
+            monster.speaker.StopLoop();
             if (Player == NO_PLAYER) return;
             monster.transform.rotation = Quaternion.LookRotation(
                 movement.GetDirectionIgnoreY(monster.Player.transform.position)); // Look at target before attacking
+            monster.speaker.PlayClip(AudioManager.Audios.Scream);
             await animator.GoToState(MonsterStates.Chase);
-            //enemy.PlayAudio(BaseEnemy.SoundFile.Scream);
         }
         
         
@@ -109,7 +110,9 @@ namespace Monster.StateMachine.States
             else if (!NoPath()){ Destination = curPath.Pop(); }
 
             // If the Stack is empty, make a new path
-            else { 
+            else
+            {
+                monster.speaker.StopLoop();
                 _ = animator.GoToState(MonsterStates.None);
 
                 pausePatrolling = true;
@@ -133,6 +136,7 @@ namespace Monster.StateMachine.States
             }
 
             Destination = curPath.Pop(); // Pop the first target position from the path stack
+            monster.speaker.PlayLoop(AudioManager.Audios.Walk);
         }
 
         
@@ -157,7 +161,7 @@ namespace Monster.StateMachine.States
 
         /// Use A* search to create a path to the enemy's next destination
         private async Task<Stack<Vector3>> CreatePath() { 
-            return await AStarSearch.Search (
+            return AStarSearch.Search (
             monster.transform, GetDestination(), epochs: 3000, useFloorPos: true
             ); 
         }

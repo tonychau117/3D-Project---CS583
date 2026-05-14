@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Cysharp.Threading.Tasks;
 using Monster.Components;
 using Monster.StateMachine.States;
@@ -14,7 +15,8 @@ namespace Monster.StateMachine
     [HideMonoScript]
     [RequireComponent(typeof(Movement)),
     RequireComponent(typeof(Detection)),
-    RequireComponent(typeof(AnimationHandler))]
+    RequireComponent(typeof(AnimationHandler)),
+    RequireComponent(typeof(AudioManager))]
     public class MonsterStateMachine : MonoBehaviour
     {
         // HEADER: CONSTANTS 
@@ -32,9 +34,10 @@ namespace Monster.StateMachine
         [Tooltip("How long the monster should remain at a marker before moving on to the next"), SerializeField]
         private int patrolDelay;
         public int PatrolDelay => patrolDelay;
-        [Tooltip("Empty Objects representing the locations you want the monster to pathfind to"), SerializeField]
-        private List<Transform> patrolMarkers;
-        public List<Transform> PatrolMarkers => patrolMarkers;
+
+        [Tooltip("Container holding Empty Objects representing the locations you want the monster to pathfind to"), SerializeField]
+        private GameObject patrolMarkerContainer;
+        public List<Transform> PatrolMarkers { get; private set; }
 
         [Header("Searching")] 
         
@@ -62,6 +65,7 @@ namespace Monster.StateMachine
         public Movement movement { get; private set; }
         public Detection detection { get; private set; }
         public AnimationHandler animator { get; private set; }
+        public AudioManager speaker { get; private set; }
         
         
         // HEADER: RUNTIME FIELDS
@@ -111,6 +115,8 @@ namespace Monster.StateMachine
             movement = GetComponent<Movement>();
             detection = GetComponent<Detection>();
             animator = GetComponent<AnimationHandler>();
+            speaker = GetComponent<AudioManager>();
+            PatrolMarkers = patrolMarkerContainer.GetComponentsInChildren<Transform>().ToList();
         }
         
         protected void Start() { _ = ChangeToState(MonsterStates.None, MonsterStates.Patrol); }
@@ -137,17 +143,19 @@ namespace Monster.StateMachine
         // ReSharper disable Unity.PerformanceAnalysis
         // TODO: Come back to commented out code
         /// Exit old state, change to new state, enter new state
-        public async UniTask ChangeToState(MonsterStates fromState, MonsterStates toState/*!, bool stopRun = false*/)
+        public async UniTask ChangeToState(MonsterStates fromState, MonsterStates toState, bool stopRun = false)
         {
             
             // Do not Change State if the calling state is no longer valid
             if (CurrentStateID != fromState /*!&& (int)fromState >= 0*/) return;
 
-            //
-            if (awaitingRun/*! && !stopRun*/) await UniTask.WaitUntil(() => !awaitingRun);
-            
+            if (stop) await UniTask.WaitUntil(() => !stop);
+
             // Stop the current running state
             stop = true;
+            
+            //
+            if (awaitingRun && !stopRun) await UniTask.WaitUntil(() => !awaitingRun);
             
             // Exit the previous state
             if(CurrentStateID != NoState){ await CurrentState.Exit(); CurrentState = null;}
@@ -158,10 +166,10 @@ namespace Monster.StateMachine
             // Enter the new state
             if(CurrentStateID != NoState)  { await CurrentState!.Enter(); }
             
+            if(Settings.Debug){print("Monster has changed from " + fromState + " to " + toState);}
+            
             // Resume state running
             stop = false;
-            
-            if(Settings.Debug){print("Monster has changed from " + fromState + " to " + toState);}
         }
 
         /// Set the current state based on the give state enum (can be overrided to add more options in subclasses)

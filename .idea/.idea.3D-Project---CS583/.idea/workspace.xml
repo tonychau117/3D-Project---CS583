@@ -11,39 +11,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="97ac6033-1336-4f1d-b63f-c2892bb4bd6c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Monster/AnimationHandler.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Monster/TauntBehaviour.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/AudioManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.3D-Project---CS583/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.3D-Project---CS583/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Packs/Polygonmaker/Polygonmaker Animations/Creatures/Anim_Creature@attack1.FBX" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Packs/Polygonmaker/Polygonmaker Animations/Creatures/Anim_Creature@attack1.FBX.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Packs/Polygonmaker/Polygonmaker Animations/Creatures/Anim_Creature@attack2.FBX" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Packs/Polygonmaker/Polygonmaker Animations/Creatures/Anim_Creature@attack2.FBX.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Packs/Polygonmaker/Polygonmaker Animations/Creatures/Anim_Creature@attack3.FBX" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Packs/Polygonmaker/Polygonmaker Animations/Creatures/Anim_Creature@attack3.FBX.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Packs/Polygonmaker/Polygonmaker Animations/Creatures/Anim_Creature@attack4.FBX" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Packs/Polygonmaker/Polygonmaker Animations/Creatures/Anim_Creature@attack4.FBX.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Packs/Polygonmaker/Polygonmaker Animations/Creatures/Anim_Creature@idle.FBX" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Packs/Polygonmaker/Polygonmaker Animations/Creatures/Anim_Creature@idle.FBX.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Packs/Polygonmaker/Polygonmaker Animations/Creatures/Anim_Creature@run-inplace.FBX" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Packs/Polygonmaker/Polygonmaker Animations/Creatures/Anim_Creature@run-inplace.FBX.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Packs/Polygonmaker/Polygonmaker Animations/Creatures/Anim_Creature@taunt1.FBX" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Packs/Polygonmaker/Polygonmaker Animations/Creatures/Anim_Creature@taunt1.FBX.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Packs/Polygonmaker/Polygonmaker Animations/Creatures/Anim_Creature@taunt2.FBX" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Packs/Polygonmaker/Polygonmaker Animations/Creatures/Anim_Creature@taunt2.FBX.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Packs/Polygonmaker/Polygonmaker Animations/Creatures/Anim_Creature@walk-inplace.FBX" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Packs/Polygonmaker/Polygonmaker Animations/Creatures/Anim_Creature@walk-inplace.FBX.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Packs/Polygonmaker/Polygonmaker Animations/Creatures/Maybe/Anim_Creature@taunt3.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Packs/Polygonmaker/Polygonmaker Animations/Creatures/Maybe/Anim_Creature@taunt3.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/MonsterAssets/Animations/MonsterAnimator.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/MonsterAssets/Animations/MonsterAnimator.controller" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/ComputerMonster.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ComputerMonster.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Puzzle Implementation.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Puzzle Implementation.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Puzzle Implementation (Justin Modified).unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Puzzle Implementation (Justin Modified).unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Monster/AnimationHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Monster/AnimationHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Monster/Components/Detection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Monster/Components/Detection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Monster/Components/Movement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Monster/Components/Movement.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Monster/StateMachine/MonsterStateMachine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Monster/StateMachine/MonsterStateMachine.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Monster/StateMachine/States/ChaseState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Monster/StateMachine/States/ChaseState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Monster/StateMachine/States/KillState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Monster/StateMachine/States/KillState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Monster/StateMachine/States/MonsterState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Monster/StateMachine/States/MonsterState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Monster/StateMachine/States/PatrolState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Monster/StateMachine/States/PatrolState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Monster/StateMachine/States/SearchState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Monster/StateMachine/States/SearchState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Tools/AStarSearch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Tools/AStarSearch.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Tools/PhyTools.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Tools/PhyTools.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,14 +43,20 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/18b3b31e3d8341f487466ebb6800bc67212400/5a/b38192dc/Transform.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/18b3b31e3d8341f487466ebb6800bc67212400/3f/f49bec52/GameObject.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/18b3b31e3d8341f487466ebb6800bc67212400/5a/b38192dc/Transform.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/18b3b31e3d8341f487466ebb6800bc67212400/e8/75632032/Component.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1eb9db207454431c84a47bcd81e79c3746ae00/ea/2d189589/ExceptionDispatchInfo.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6faa6124236442759eb396cfbfdad50810fc00/b1/a504a240/Enumerable.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7d303c2bf72cd4cec95665b89c457d265d2b8ef3ed6da17cd4f85587c2f9de7/System.Linq.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/AudioManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameSettings.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Monster/AnimationHandler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Monster/StateMachine/MonsterStateMachine.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Tools/AStarSearch.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Tools/PhyTools.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8,
   &quot;fromUser&quot;: false
@@ -143,13 +135,14 @@
       <updated>1778551575189</updated>
       <workItem from="1778551630850" duration="1682000" />
       <workItem from="1778644728892" duration="25229000" />
-      <workItem from="1778705604194" duration="3847000" />
+      <workItem from="1778705604194" duration="18501000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityProjectDiscoverer">
     <option name="hasUnityReference" value="true" />
@@ -187,19 +180,63 @@
           <option name="timeStamp" value="3" />
         </breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Monster/AnimationHandler.cs</url>
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Monster/StateMachine/States/ChaseState.cs</url>
           <line>59</line>
-          <properties documentPath="C:\Users\justi\OneDrive\Documents\GitHub\3D-Project---CS583\Assets\Scripts\Monster\AnimationHandler.cs" containingFunctionPresentation="Method 'GoToState'">
+          <properties documentPath="C:\Users\justi\OneDrive\Documents\GitHub\3D-Project---CS583\Assets\Scripts\Monster\StateMachine\States\ChaseState.cs" containingFunctionPresentation="Method 'CheckIfInSight'">
             <startOffsets>
-              <option value="1961" />
+              <option value="2030" />
             </startOffsets>
             <endOffsets>
-              <option value="1967" />
+              <option value="2090" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="10" />
+          <option name="timeStamp" value="59" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Monster/Components/Movement.cs</url>
+          <line>99</line>
+          <properties documentPath="C:\Users\justi\OneDrive\Documents\GitHub\3D-Project---CS583\Assets\Scripts\Monster\Components\Movement.cs" containingFunctionPresentation="Method 'InFront'">
+            <startOffsets>
+              <option value="3700" />
+            </startOffsets>
+            <endOffsets>
+              <option value="3763" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="61" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Monster/Components/Detection.cs</url>
+          <line>48</line>
+          <properties documentPath="C:\Users\justi\OneDrive\Documents\GitHub\3D-Project---CS583\Assets\Scripts\Monster\Components\Detection.cs" containingFunctionPresentation="Method 'TransformInView'">
+            <startOffsets>
+              <option value="1480" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1833" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="62" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Tools/PhyTools.cs</url>
+          <line>39</line>
+          <properties documentPath="C:\Users\justi\OneDrive\Documents\GitHub\3D-Project---CS583\Assets\Scripts\Tools\PhyTools.cs" containingFunctionPresentation="Method 'RaycastForTransform'">
+            <startOffsets>
+              <option value="1754" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1755" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="63" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="Type#UnityEngine.GameObject" memberName="tag" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
 </project>

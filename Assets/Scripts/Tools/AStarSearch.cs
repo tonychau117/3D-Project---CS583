@@ -33,16 +33,16 @@ namespace Tools
         }
 
         /// <summary> Use A* Search to find a path between a Starting and Goal position </summary>
-        public static async UniTask<Stack<Vector3>> Search(Transform entity, Vector3 goal, 
+        public static Stack<Vector3> Search(Transform entity, Vector3 goal, 
             int epochs = 1000, float threshold = 1, bool useFloorPos = false)
         {
-
-            await UniTask.Yield();
             
             //HEADER: __Initializations__ 
             
             var start = useFloorPos ? entity.Find("FloorLevel").position : entity.position; // The Entity's Starting Position
-            var size = entity.localScale; // Size of the entity
+            //! HARDCODED, Change in future
+            goal = new Vector3(goal.x, start.y, goal.z);
+            var size = new Vector3(1,4,1); // Size of the entity 
             
             var openList = new List<AStarNode>(); // Queue for storing unchecked positions
             var closedList = new List<AStarNode>(); // Queue for storing already checked positions

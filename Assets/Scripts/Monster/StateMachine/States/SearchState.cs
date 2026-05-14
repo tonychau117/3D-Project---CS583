@@ -33,8 +33,8 @@ namespace Monster.StateMachine.States
         public override async UniTask Enter()
         {
             // Create a path to the last known location of the target
-            curPath = await AStarSearch.Search(monster.transform, Player.transform.position, useFloorPos: true);
-            if(curPath.IsUnityNull()){ _ = monster.ChangeToState(MonsterStates.Search, MonsterStates.Patrol); }
+            curPath = AStarSearch.Search(monster.transform, Player.transform.position, 500, 2, useFloorPos: true);
+            if(curPath.IsUnityNull()){ _ = monster.ChangeToState(MonsterStates.Search, MonsterStates.Patrol); return;}
             
             // Start moving the enemy through the path
             if (curPath != null) monster.Destination = curPath.Pop();
@@ -50,7 +50,7 @@ namespace Monster.StateMachine.States
         public override async UniTask Run() {
             // If the enemy is found, return to a Chase State
             if (detection.TransformInSight(Player.transform)){
-                await monster.ChangeToState(MonsterStates.Search, MonsterStates.Chase); return;
+                _ = monster.ChangeToState(MonsterStates.Search, MonsterStates.Chase); return;
             }
 
             if (timeout)
@@ -65,7 +65,11 @@ namespace Monster.StateMachine.States
             await Search();
         }
 
-        public override UniTask Exit() {return UniTask.CompletedTask;}
+        public override async UniTask Exit()
+        {
+            await monster.speaker.FadeOut(0);
+            monster.speaker.ToggleBGPlay();
+        }
         
         
         // HEADER: SEARCH METHODS
@@ -77,7 +81,6 @@ namespace Monster.StateMachine.States
             // If the enemy has not yet reached the target position, move towards it
             if (!movement.AtLocation(monster.Destination))
             {
-                _ = animator.GoToState(MonsterStates.None);
                 movement.MoveTowardsLocation(monster.Destination);
             }
             
@@ -87,7 +90,7 @@ namespace Monster.StateMachine.States
             // If the Stack is empty, 
             else
             {
-                curPath = await AStarSearch.Search(monster.transform, Player.transform.position, useFloorPos: true);
+                curPath = AStarSearch.Search(monster.transform, Player.transform.position, useFloorPos: true);
                 
                 // If a valid path is not found, set the NPC back to idle
                 if(NoPath()){ _ = monster.ChangeToState(MonsterStates.Search, MonsterStates.Patrol); return;}
@@ -99,7 +102,7 @@ namespace Monster.StateMachine.States
 
         private void HandleTimeout()
         {
-            if (detection.TransformInSight(Player.transform))
+            if (Player.transform && detection.TransformInSight(Player.transform))
             {
                 InvokeWithDelay(
                     () => { HandleTimeout(); }, SearchTime);

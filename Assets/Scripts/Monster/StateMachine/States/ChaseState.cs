@@ -16,7 +16,9 @@ namespace Monster.StateMachine.States
             
             // Initialize Values
             movement.Speed = movement.DefaultSpeed + 3;
-            
+            monster.speaker.Mute();
+            monster.speaker.ToggleBGPlay(AudioManager.Audios.Music);
+            _ = monster.speaker.FadeIn(0.75f);
             return UniTask.CompletedTask;
         }
 
@@ -31,7 +33,7 @@ namespace Monster.StateMachine.States
             
             FollowTarget(); // NPC will follow their target
             
-            if(!CheckIfInSight()) { IfLost(); } // If the NPC loses sight of the target
+            if(!CheckIfInSight()) { IfLost(); return;} // If the NPC loses sight of the target
             
             // If NPC is in range of their target, do an attack
             if (!CheckIfInRange()) return;
@@ -55,12 +57,12 @@ namespace Monster.StateMachine.States
             return movement.WithinLocation(monster.KillDistance ,monster.Player.transform.position); }
         
         protected virtual bool CheckIfInSight()
-        { return detection.TransformInView(monster.Player.transform); }
+        { return detection.TransformInSight(monster.Player.transform); }
 
         /// What the NPC should do if they lose a target
         protected virtual void IfLost()
         {
-            _ = monster.ChangeToState(MonsterStates.Chase, MonsterStates.Patrol);
+            _ = monster.ChangeToState(MonsterStates.Chase, MonsterStates.Search);
         }
     }
 }

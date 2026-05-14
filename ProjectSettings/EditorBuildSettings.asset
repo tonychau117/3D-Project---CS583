@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/GameExample.unity
     guid: 277fc9bba19e2c84388df5cc1bc5ba02
   - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Testing/Monster Testing/MonsterMakingScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
     path: Assets/Scenes/Puzzle Implementation.unity

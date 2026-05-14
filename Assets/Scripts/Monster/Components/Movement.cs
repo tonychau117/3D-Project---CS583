@@ -51,6 +51,8 @@ namespace Monster.Components
         /// Set a given vectors y-value to the y-value of the entity
         private Vector3 GetGroundedPosition(Vector3 pos) { return new Vector3(pos.x, position.y, pos.z); }
 
+        public Vector3 GetCenteredPosition(Vector3 pos) { return position + centering_factor; }
+        
         /// Returns true if an NPC is within a certain distance from a coordinate (Ignores height)
         public bool WithinLocation(float distance, Vector3 location) {
             return Vector3.Distance(position, GetGroundedPosition(location)) < distance; }
@@ -93,6 +95,13 @@ namespace Monster.Components
         }
 
         /// Return whether the given coordinate is in front of the NPC
-        public bool InFront(Vector3 coordinate) { return Vector3.Dot(forward, GetDirection(coordinate)) >= 0; }
+        public bool InFront(Vector3 coordinate)
+        {
+            var test = Vector3.Dot(forward, GetDirection(coordinate)) >= 0;
+            var test1 = forward;
+            var test2 = GetDirection(coordinate);
+            var test3 = Vector3.Dot(forward, GetDirection(coordinate));
+            return Vector3.Dot(forward, GetDirection(coordinate)) >= 0;
+        }
     }
 }

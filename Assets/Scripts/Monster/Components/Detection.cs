@@ -47,7 +47,7 @@ namespace Monster.Components
         /// Returns true if there is a direct line between this npc and the transform
         public bool TransformInView(Transform target_transform) {
             return PhyTools.RaycastForTransform(
-                position, // Start Raycast
+                movement.GetCenteredPosition(position), // Start Raycast
                 movement.GetCenteredDirection(target_transform.position), // Raycast Direction
                 ActiveDetectionRange, // Raycast Distance
                 target_transform, // The transform to detect
